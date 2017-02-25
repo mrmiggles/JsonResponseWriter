@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core">
+
+<table id="example" class="display" width="100%" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Title</th>
+            </tr>
+        </thead>
+        </table>
+
+	<xp:scriptBlock>
+		<xp:this.value><![CDATA[$(function(){
+		
+    $('#example').DataTable( {
+		"ajax": {
+		    "url": "getData.xsp?myKey=fuck",
+		    "dataSrc": function ( json ) {
+		    	//var data = [];
+		    	//console.log(json.data[0])
+		    	//data[0] = [json.data[0].name, json.data[0].title]
+		      	return json.data;
+		    } 
+	    },
+        "columns": [
+            { "data": "name" },
+            { "data": "title" }
+        ]	    
+	           
+    } );		
+})]]></xp:this.value>
+	</xp:scriptBlock>
+
+</xp:view>

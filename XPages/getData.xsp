@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view
+	xmlns:xp="http://www.ibm.com/xsp/core"
+	rendered="false"
+	viewState="nostate">
+	<xp:this.afterRenderResponse>
+		<![CDATA[#{javascript:com.miguel.test.Data.GetMyDataAsJson();}]]>
+	</xp:this.afterRenderResponse>
+	
+	XAgent. This will not render as a page, but as application/json data.
+</xp:view>

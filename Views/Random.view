@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<note xmlns="http://www.lotus.com/dxl" class="view">
+  <item name="$FormulaClass" sign="true">
+    <text>1</text>
+  </item>
+  <item name="$TITLE" sign="true">
+    <text>Random</text>
+  </item>
+  <item name="$Index" sign="true">
+    <text/>
+  </item>
+  <item name="$Formula" summary="true" sign="true">
+    <formula compiled="true">
+VgAFACYAIgAEAAQABQAJAAQATmFtZVRpdGxlJENvbmZsaWN0JFJFRgQABAAAAB4ABQAEAEZvcm0B
+AAYAUmFuZG9tCgIEAAQAAwAHAAwABQAJM1M0UwA=
+</formula>
+  </item>
+  <item name="$Collation" summary="true">
+    <rawitemdata type="2">
+BgAAAABE
+</rawitemdata>
+  </item>
+  <item name="$ViewFormat" summary="true" sign="true">
+    <rawitemdata type="5">
+AQACAAIACAAAAFZDAAAEAAQAAAAAAFAAAQAACgAAAAAAAAAAAAICAAAAVkMAAAUABQAAAAAAUAAB
+AAAKAAAAAAAAAAAAAgIAAABOYW1lTmFtZVRpdGxlVGl0bGUmAAEAAAABAQAJAQAACgEBDgoAAAEA
+rSsBAAEAAQAAAAAAAAAAAFdDAQEACQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP//AAAAAAAAAAAA
+AAAAAABXQwEBAAkAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAD//wAAAAAAAAAAAAAAAAAAQgAAAAAA
+AQD///8ABQD///8AAQAAAAAAAAAAAAAAAAABAP///wABAP///wAAAAEAAAAAAAEAAAAAAAEAAAAA
+AAAACAAAAAAAAQA=
+</rawitemdata>
+  </item>
+  <item name="$Comment" sign="true">
+    <text/>
+  </item>
+  <item name="$Flags">
+    <text>PY</text>
+  </item>
+  <item name="$SelQuery" sign="true">
+    <rawitemdata type="f">
+gQYAAAAAif8SAAAAAAABAAYAUmFuZG9t
+</rawitemdata>
+  </item>
+</note>
