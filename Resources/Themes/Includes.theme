@@ -6,16 +6,19 @@
 
 	1. webstandard 2. oneui 3. notes
 -->
-<theme extends="Bootstrap3_flat" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="platform:/plugin/com.ibm.designer.domino.stylekits/schema/stylekit.xsd" >
+<theme extends="Bootstrap3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="platform:/plugin/com.ibm.designer.domino.stylekits/schema/stylekit.xsd" >
 
 	<resource>
 		<content-type>application/x-javascript</content-type>
 		<href>js/disableAMD.js</href>
 	</resource>
-	<resource>
-		<content-type>application/x-javascript</content-type>
-		<href>js/jquery-2.2.4.min.js</href>
-	</resource>
+	<resources>
+		<script src="js/jquery-2.2.4.min.js" clientSide="true"></script>
+	 	<script src="bootstrap/js/bootstrap.min.js" clientSide="true"></script>
+	 	<styleSheet href="bootstrap/css/bootstrap.min.css"></styleSheet>
+	</resources>
+
+	<!-- Datatables -->
 	<resource>
 		<content-type>text/css</content-type>
 		<href>datatables/datatables.min.css</href>
