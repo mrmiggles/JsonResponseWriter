@@ -4,8 +4,9 @@
 	rendered="false"
 	viewState="nostate">
 	<xp:this.afterRenderResponse>
-		<![CDATA[#{javascript:com.miguel.test.Data.GetMyDataAsJson();}]]>
+		<![CDATA[#{javascript:com.miguel.json.Links.getLinks();}]]>
 	</xp:this.afterRenderResponse>
-	
-	XAgent. This will not render as a page, but as application/json data.
+
+	XAgent. This will not render as a page, but as application/json
+	data.
 </xp:view>

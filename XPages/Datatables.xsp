@@ -19,12 +19,11 @@
 	<xp:this.value><![CDATA[$(function(){
 		
     $('#example').DataTable( {
+        "processing": true,
+        "serverSide": true,
 		"ajax": {
-		    "url": "getData.xsp?myKey=fuck",
+		    "url": "getData.xsp",
 		    "dataSrc": function ( json ) {
-		    	//var data = [];
-		    	//console.log(json.data[0])
-		    	//data[0] = [json.data[0].name, json.data[0].title]
 		      	return json.data;
 		    } 
 	    },
