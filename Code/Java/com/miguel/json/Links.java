@@ -9,7 +9,6 @@ import javax.faces.context.ResponseWriter;
 import javax.servlet.http.HttpServletResponse;
 
 import lotus.domino.Database;
-import lotus.domino.Document;
 import lotus.domino.NotesException;
 import lotus.domino.View;
 import lotus.domino.ViewEntry;
@@ -44,7 +43,7 @@ public class Links {
 			String sortOrder = (exConP.containsKey("order[0][dir]")) ? exConP.get("order[0][dir]").toString() : null;
 			boolean order = true;
 			
-			if(sortOrder == "desc"){
+			if(sortOrder.equals("desc")){
 				order = false;
 			}
 		
@@ -54,8 +53,7 @@ public class Links {
 			
 
 			Database db = ExtLibUtil.getCurrentDatabase();
-			View vw = db.getView("Random");
-			
+			View vw = db.getView("Names");
 			
 			if(orderColumn != null){
 				String n = (String) vw.getColumnNames().get(Integer.parseInt(orderColumn));
@@ -63,9 +61,9 @@ public class Links {
 			}
 			
 			
-
+			int records = 0;
 			if(search == null || search.isEmpty()){
-				DT(vw, dataAr, count, index);
+				records = DT(vw, dataAr, count, index);
 			} else {
 				JsonJavaObject curOb = new JsonJavaObject();
 				curOb.putJsonProperty("search", "true");
@@ -73,6 +71,8 @@ public class Links {
 				
 			}
 			
+			myData.putJsonProperty("recordsTotal", vw.getEntryCount());
+			myData.putJsonProperty("recordsFiltered", vw.getEntryCount());
 			vw.recycle();
 
 			//wrap it up and add the JsonArray of JsonJavaObjects to the main object
@@ -89,7 +89,7 @@ public class Links {
 		writer.write(myData.toString());		
 	}
 	
-	private static void DT(View vw, JsonJavaArray dataAr, int count, int index) throws NotesException{
+	private static int DT(View vw, JsonJavaArray dataAr, int count, int index) throws NotesException{
 		ViewNavigator nav = vw.createViewNav();
 		ViewEntry entry = nav.getNth(index);
 		int counter = 0;
@@ -98,8 +98,8 @@ public class Links {
 			JsonJavaObject curOb = new JsonJavaObject();
 			String name = entry.getColumnValues().get(0).toString();
 			String title = entry.getColumnValues().elementAt(1).toString();
-			curOb.putJsonProperty("name", name);
-			curOb.putJsonProperty("title", title);
+			curOb.putJsonProperty("First", name);
+			curOb.putJsonProperty("Last", title);
 			dataAr.add(curOb);
 			
 			
@@ -124,6 +124,7 @@ public class Links {
 			curOb.putJsonProperty("counter", Integer.toString(counter));
 			dataAr.add(curOb);				
 		}	
-		*/	
+		*/
+		return counter;
 	}
 }

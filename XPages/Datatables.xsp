@@ -6,8 +6,8 @@
 		<table id="example" class="table table-bordered">
 		  <thead>
 		      <tr>
-		          <th>Name</th>
-		          <th>Title</th>
+		          <th>First</th>
+		          <th>Last</th>
 		      </tr>
 		  </thead>
 		</table>	
@@ -28,8 +28,8 @@
 		    } 
 	    },
         "columns": [
-            { "data": "name" },
-            { "data": "title" }
+            { "data": "First" },
+            { "data": "Last" }
         ]	    
 	           
     } );		

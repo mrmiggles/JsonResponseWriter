@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core">
+
+	<xp:button value="Generate Names" id="button1">
+		<xp:eventHandler event="onclick" submit="true"
+			refreshMode="complete">
+			<xp:this.action><![CDATA[#{javascript:var d = new com.miguel.test.GenerateData();
+d.generateNames();}]]></xp:this.action>
+		</xp:eventHandler></xp:button>
+	<xp:br></xp:br>
+	<xp:br></xp:br>
+	<xp:text escape="true" id="computedField1" value="#{javascript:com.miguel.test.LibraryPath.getPath()}"></xp:text></xp:view>

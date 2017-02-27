@@ -1,6 +1,12 @@
 package com.miguel.test;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Random;
 import java.util.Set;
 
 import lotus.domino.Database;
@@ -10,10 +16,10 @@ import lotus.domino.NotesException;
 import com.ibm.xsp.extlib.util.ExtLibUtil;
 
 public class GenerateData {
+	Database db = ExtLibUtil.getCurrentDatabase();
 	
 	public boolean generate(){
-		Database db = ExtLibUtil.getCurrentDatabase();
-		
+	
 		for(int i=0; i<1000; i++){
 			try {
 				Document doc = db.createDocument();
@@ -52,6 +58,37 @@ public class GenerateData {
 	        }
 	    }
 	    return builder.toString();
+	}
+	
+	public void generateNames(){
+		Random random = new Random();
+		File file = new File("C:\\IBM\\Notes\\Data\\names\\male-names.txt");
+		ArrayList<String> names = new ArrayList<String>();
+		try {
+			BufferedReader br = new BufferedReader(new FileReader(file));
+		    for(String line; (line = br.readLine()) != null; ) {
+		    	names.add(line);
+		    }
+		    br.close();
+		    
+		    /* Generate 1000 names*/
+		    for(int i=0; i<1000; i++){
+		    	int first = random.nextInt(names.size()-1) + 1;
+		    	int last = random.nextInt(names.size()-1) + 1;
+				Document doc = db.createDocument();
+				doc.appendItemValue("Form", "Name");
+				doc.appendItemValue("FirstName", names.get(first));
+				doc.appendItemValue("LastName", names.get(last));
+				doc.save();
+				doc.recycle();		    	
+		    }
+		    
+		    
+		}catch(IOException e){
+			e.printStackTrace();
+		} catch (NotesException e) {
+			e.printStackTrace();
+		}		
 	}
 	
 
