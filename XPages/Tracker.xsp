@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core"
+	xmlns:xe="http://www.ibm.com/xsp/coreex">
+
+	<xp:table id="bug-table" styleClass="table table-bordered">
+		<thead>
+			<tr>
+				<th>Status</th>
+				<th>User</th>
+				<th>Description</th>
+				<th>Browser</th>
+				<th>Browser Version</th>
+				<th>URL</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+	</xp:table>
+
+	<xe:restService id="restService1" pathInfo="getIssues">
+		<xe:this.service>
+			<xe:customRestService contentType="application/json"
+				doGet="#{javascript:gov.lanl.data.Tracker.getBugs()}">
+			</xe:customRestService>
+		</xe:this.service>
+	</xe:restService>
+
+	<xp:scriptBlock>
+		<xp:this.value><![CDATA[$(function(){
+		var url = "#{javascript:facesContext.getExternalContext().getRequest().getRequestURI()}" + "/getIssues";
+			
+	var table = $(XSP.getElementById("#{id:bug-table}")).DataTable( {
+	  "serverSide": true,
+	  "ajax": {
+	    "url": url,
+	    "type": "GET"
+	  },
+	  "columns": [
+            { "data": "status" },
+            { "data": "user" },
+            { "data": "desc" },
+            { "data": "browser" },
+            { "data": "version" },
+            { "data": "url" }	  
+	  ],
+	"columnDefs": [ 
+		{ "targets": 6, "data": null, "defaultContent": "<button>Click!</button>"} ,
+		{ "targets": 0, "orderable": true}, 
+		{ "targets": 1, "orderable": true}, 
+		{ "targets": 2, "orderable": false},
+		{ "targets": 3, "orderable": false}, 
+		{ "targets": 4, "orderable": false}, 
+		{ "targets": 5, "orderable": false}	 
+	]	  
+	} );
+	
+    x$('#{id:bug-table}', ' tbody').on( 'click', 'button', function (e) {
+    	e.preventDefault();
+        var data = table.row( $(this).parents('tr') ).data();
+       console.log( data["unid"] );
+    } );	
+})]]></xp:this.value>
+	</xp:scriptBlock>
+</xp:view>

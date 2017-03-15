@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<note xmlns="http://www.lotus.com/dxl" class="view">
+  <item name="$FormulaClass" sign="true">
+    <text>1</text>
+  </item>
+  <item name="$TITLE" sign="true">
+    <text>bugs</text>
+  </item>
+  <item name="$Index" sign="true">
+    <text/>
+  </item>
+  <item name="$Formula" summary="true" sign="true">
+    <formula compiled="true">
+gAAFAFIATQAIAAYABAALAAcABwAJAAkABABzdGF0dXN1c2VyZGVzY3JpcHRpb25icm93c2VydmVy
+c2lvbnhwYWdlX3VybCRDb25mbGljdCRSRUYABAAEAAAAHAAFAAQARm9ybQEAAwBidWcACgIEAAQA
+AwAHAAwABQAJM1M0UwA=
+</formula>
+  </item>
+  <item name="$Collation" summary="true">
+    <rawitemdata type="2">
+HgACAABEAGYAAAAGAIBmAAYABABzdGF0dXN1c2Vy
+</rawitemdata>
+  </item>
+  <item name="$Collation1" summary="true">
+    <rawitemdata type="2">
+EwABAABEAGYAAAAGAHN0YXR1cw==
+</rawitemdata>
+  </item>
+  <item name="$Collation2" summary="true">
+    <rawitemdata type="2">
+EwABAABEAWYAAAAGAHN0YXR1cw==
+</rawitemdata>
+  </item>
+  <item name="$Collation3" summary="true">
+    <rawitemdata type="2">
+EQABAABEgGYAAAAEAHVzZXI=
+</rawitemdata>
+  </item>
+  <item name="$Collation4" summary="true">
+    <rawitemdata type="2">
+EQABAABEgWYAAAAEAHVzZXI=
+</rawitemdata>
+  </item>
+  <item name="$ViewFormat" summary="true" sign="true">
+    <rawitemdata type="5">
+AQAGAAYACAAAAFZDAQMGAAYAAAAAAFAAAQAACgAAAAAAAAAAAAICAAAAVkMBAwQABAAAAAAAUAAB
+AAAKAAAAAAAAAAAAAgIAAABWQwAACwAEAAAAAABQAAEAAAoAAAAAAAAAAAACAgAAAFZDAAAHAAcA
+AAAAAFAAAQAACgAAAAAAAAAAAAICAAAAVkMAAAcABwAAAAAAUAABAAAKAAAAAAAAAAAAAgIAAABW
+QwAACQADAAAAAABQAAEAAAoAAAAAAAAAAAACAgAAAHN0YXR1c3N0YXR1c3VzZXJ1c2VyZGVzY3Jp
+cHRpb25kZXNjYnJvd3NlcmJyb3dzZXJ2ZXJzaW9udmVyc2lvbnhwYWdlX3VybHVybCYAAQAAAAEB
+AAkBAAAKAQEOCgAAAQCtKwEAAQABAAAAAAAAAAAAV0MBAQAJAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAA//8AAAAAAAAAAAAAAAAAAFdDAQEACQAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAP//AAAAAAAA
+AAAAAAAAAABXQwEBAAkAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAD//wAAAAAAAAAAAAAAAAAAV0MB
+AQAJAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAA//8AAAAAAAAAAAAAAAAAAFdDAQEACQAAAAAAAAAA
+AAAAAAAAAAAAAAQAAAAAAP//AAAAAAAAAAAAAAAAAABXQwEBAAkAAAAAAAAAAAAAAAAAAAAAAAAE
+AAAAAAD//wAAAAAAAAAAAAAAAAAAQgAAAAAAAQD///8ABQD///8AAQAAAAAAAAAAAAAAAAABAP//
+/wABAP///wAAAAEAAAAAAAEAAAAAAAEAAAAAAAAACAAAAAAAAQA=
+</rawitemdata>
+  </item>
+  <item name="$Comment" sign="true">
+    <text/>
+  </item>
+  <item name="$Flags">
+    <text>PY</text>
+  </item>
+  <item name="$SelQuery" sign="true">
+    <rawitemdata type="f">
+gQYAAAAAif8PAAAAAAABAAMAYnVnAA==
+</rawitemdata>
+  </item>
+</note>

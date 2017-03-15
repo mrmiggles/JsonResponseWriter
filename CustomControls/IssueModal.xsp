@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core"
+	xmlns:xp_1="http://www.ibm.com/xsp/coreex">
+
+
+	<div class="modal fade" id="bugModal" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close"
+						data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">
+							<i class="fa fa-times"></i>
+						</span>
+					</button>
+					<h4 class="modal-title" id="exampleModalLabel">
+						New Issue
+					</h4>
+				</div>
+				<div class="modal-body">
+					<div class="form-group">
+						<label for="message-text"
+							class="control-label">
+							Brief Description:
+						</label>
+						<xp:panel tagName="textarea" styleClass="form-control" id="msg-text"></xp:panel>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default"
+						data-dismiss="modal">
+						Close
+					</button>
+					<xp:button styleClass="btn btn-primary" id="report-bug"
+						value="Submit">
+					</xp:button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<xp_1:jsonRpcService id="jsonRpcService1" serviceName="tracker"
+		rendered="#{javascript:context.getUser().getRoles()}">
+		<xp_1:this.methods>
+			<xp_1:remoteMethod name="createIssue">
+				<xp_1:this.arguments>
+					<xp_1:remoteMethodArg name="msg" type="string">
+					</xp_1:remoteMethodArg>
+					<xp_1:remoteMethodArg name="browser"
+						type="string">
+					</xp_1:remoteMethodArg>
+					<xp_1:remoteMethodArg name="version"
+						type="string">
+					</xp_1:remoteMethodArg>
+				</xp_1:this.arguments>
+				<xp_1:this.script><![CDATA[try {
+	if(msg== null ||  msg== "") return false;
+
+	var doc:NotesDocument = database.createDocument();
+	doc.appendItemValue("form", "bug");
+	doc.appendItemValue("description", msg);
+	doc.appendItemValue("browser", browser);
+	doc.appendItemValue("version", version);
+	doc.appendItemValue("xpage_url", facesContext.getExternalContext().getRequest().getRequestURI());
+	doc.appendItemValue("user", context.getUser().getDistinguishedName());
+	doc.appendItemValue("status", "open");
+	return doc.save();
+} catch (e) {
+	return e.toString()
+}]]></xp_1:this.script>
+			</xp_1:remoteMethod>
+		</xp_1:this.methods>
+	</xp_1:jsonRpcService>
+	<!--  -->
+	<xp:scriptBlock>
+		<xp:this.value><![CDATA[$(function(){
+		$(XSP.getElementById("#{id:report-bug}")).on("click", function(e){
+			var msg = XSP.getElementById("#{id:msg-text}").value;
+			var b = checkBrowser();
+			if(msg != ""){
+				tracker.createIssue(msg, b.name, b.version ).addCallback(function (response) {
+				  console.log('response: ' + response);
+				  if(response) {
+				  	$('#bugModal').modal('hide')
+				  	XSP.getElementById("#{id:msg-text}").value = "";
+				  } else {
+				  	//perhaps a toastr error or something
+				  	console.log("error: Could not create issue");
+				  }
+				})			
+			}
+		});
+		
+		
+		
+function checkBrowser(){
+	var browser = new Object();
+	var nAgt = navigator.userAgent;
+	
+	// Opera 8.0+
+	var isOpera = (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
+	
+	// Firefox 1.0+
+	var isFirefox = typeof InstallTrigger !== 'undefined';
+	
+	// Safari 3.0+ "[object HTMLElementConstructor]" 
+	
+	// Internet Explorer 6-11
+	var isIE = /*@cc_on!@*/false || !!document.documentMode;
+	
+	// Edge 20+
+	var isEdge = !isIE && !!window.StyleMedia;
+	
+	// Chrome 1+
+	var isChrome = !!window.chrome && !!window.chrome.webstore;
+	
+	// Blink engine detection
+	var isBlink = (isChrome || isOpera) && !!window.CSS;
+	
+	if(isOpera){
+		browser.name = "Opera";
+		verOffset=nAgt.indexOf("Opera");
+		fullVersion = nAgt.substring(verOffset+6);
+		if ((verOffset=nAgt.indexOf("Version"))!=-1) fullVersion = nAgt.substring(verOffset+8);
+		
+		browser.version = fullVersion;
+		
+	} else if(isFirefox){
+		verOffset=nAgt.indexOf("Firefox");
+		browser.name = "Firefox";
+		browser.version = nAgt.substring(verOffset+8);
+			
+	} else if(isEdge){
+		verOffset=nAgt.indexOf("Edge");
+		browser.name = "Edge";
+		browser.version = nAgt.substring(verOffset+5);	
+		
+	} else if(isIE) {
+		verOffset=nAgt.indexOf("Trident");
+		browser.name = "Internet Explorer";
+		browser.version = nAgt.substring(verOffset, (verOffset+11));
+				
+	} else if(isChrome) {
+		verOffset=nAgt.indexOf("Chrome");
+		browser.name = "Chrome";
+		browser.version = nAgt.substring(verOffset+7);	
+				
+	} else {
+		verOffset=nAgt.indexOf("Safari");
+		browser.name = "Safari";
+		browser.version = nAgt.substring((verOffset+7), nAgt.length);	
+	}
+	
+	//console.log(browser)
+	return browser;
+
+}
+	
+		
+	
+})]]></xp:this.value>
+	</xp:scriptBlock>
+
+
+</xp:view>
